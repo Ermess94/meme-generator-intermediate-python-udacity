@@ -13,3 +13,15 @@ class QuoteModel():
         """
         self.body = body
         self.author = author
+
+    def __repr__(self) -> str:
+        """
+        Returns a string representation of the QuoteModel instance.
+
+        The returned string includes the quote body and author in the format:
+        "{quote_body} - {author}"
+
+        Returns:
+            str: A string representation of the QuoteModel instance.
+        """
+        return f'{self.body} - {self.author}'

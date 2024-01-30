@@ -1,10 +1,10 @@
 import os
 import random
 
-from ingestor import Ingestor
+from ingestion.ingestor import Ingestor
 from argparse import ArgumentParser
 from meme_engine import MemeEngine
-from quote_model import QuoteModel
+from ingestion.model.quote_model import QuoteModel
 
 
 def generate_meme(path=None, body=None, author=None):

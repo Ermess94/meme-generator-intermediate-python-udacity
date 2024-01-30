@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
-from quote_model import QuoteModel
+
+from ingestion.model.quote_model import QuoteModel
 
 
 class IngestorInterface(ABC):
@@ -8,17 +9,29 @@ class IngestorInterface(ABC):
     This abstract class defines the interface for creating different ingestion strategies for parsing quotes from various file formats.
     """
 
-    @abstractmethod
+    @classmethod
     def can_ingest(self, path: str) -> bool:
         """
-        An abstract method to be implemented by concrete ingestion strategy classes.
-        Checks if the given file path can be ingested.
+        Class method to check if the given file path can be ingested based on the file extension.
 
         Parameters:
             path (str): The path of the file to be checked.
 
         Returns:
             bool: True if the file can be ingested, False otherwise.
+        """
+        extension = path.split('.')[-1]
+        valid_extensions = self.get_valid_extensions()
+        return extension in valid_extensions
+
+    @abstractmethod
+    def get_valid_extensions(self):
+        """
+        An abstract method to be implemented by concrete ingestion strategy classes.
+        Returns a list of valid file extensions that can be ingested.
+
+        Returns:
+            list: List of valid file extensions.
         """
         pass
 
