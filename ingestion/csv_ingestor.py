@@ -1,7 +1,7 @@
-import csv
+
+import pandas as pd
 from typing import List
 from ingestion import IngestorInterface, QuoteModel
-
 
 class CSVIngestor(IngestorInterface):
 
@@ -13,7 +13,7 @@ class CSVIngestor(IngestorInterface):
         Returns:
             list: List of valid file extensions.
         """
-        return ['csv'] 
+        return ['csv']
 
     @classmethod
     def parse(self, path) -> List[QuoteModel]:
@@ -26,12 +26,12 @@ class CSVIngestor(IngestorInterface):
         Returns:
             List[QuoteModel]: A list of QuoteModel instances parsed from the CSV.
         """
-        data = []
-        with open(path, 'r', newline='', encoding='utf-8') as csvfile:
-            csv_reader = csv.DictReader(csvfile)
+        data = pd.read_csv(path, encoding='utf-8')
+        quotes = []
 
-            for row in csv_reader:
-                body = row['body']
-                author = row['author']
-                data.append(QuoteModel(f'"{body}"', author))
-        return data
+        for index, row in data.iterrows():
+            body = row['body']
+            author = row['author']
+            quotes.append(QuoteModel(f'"{body}"', author))
+
+        return quotes
