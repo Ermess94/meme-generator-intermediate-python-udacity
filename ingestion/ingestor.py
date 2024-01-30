@@ -1,10 +1,5 @@
 from typing import List
-
-from ingestion.model.quote_model import QuoteModel
-from ingestion.pdf_ingestor import PDFIngestor
-from ingestion.csv_ingestor import CSVIngestor
-from ingestion.docx_ingestor import DocxIngestor
-from ingestion.text_ingestor import TextIngestor
+from ingestion import QuoteModel, PDFIngestor, CSVIngestor, DocxIngestor, TextIngestor
 
 
 class Ingestor():

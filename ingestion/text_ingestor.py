@@ -1,8 +1,5 @@
 from typing import List
-
-from ingestion.ingestor_interface import IngestorInterface
-from ingestion.model.quote_model import QuoteModel
-
+from ingestion import IngestorInterface, QuoteModel
 
 class TextIngestor(IngestorInterface):
 

@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List
-
-from ingestion.model.quote_model import QuoteModel
+from ingestion import QuoteModel
 
 
 class IngestorInterface(ABC):

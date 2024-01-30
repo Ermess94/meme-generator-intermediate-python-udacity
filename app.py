@@ -6,8 +6,8 @@ import requests
 from flask import Flask, render_template, request
 from PIL import Image
 
-from ingestion.ingestor import Ingestor
-from meme_engine import MemeEngine
+from ingestion import Ingestor
+from engine import MemeEngine
 
 app = Flask(__name__)
 
